@@ -1,0 +1,5 @@
+<dependency>
+    <groupId>com.serpapi</groupId>
+    <artifactId>google-search-results</artifactId>
+    <version>2.0.0</version>
+</dependency>

@@ -1,0 +1,54 @@
+{
+  "properties": [
+    {
+      "name": "db.password",
+      "type": "java.lang.String",
+      "description": "Database password for PostgreSQL connection.",
+      "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties"
+    },
+    {
+      "name": "serpapi.key",
+      "type": "java.lang.String",
+      "description": "API key for SerpAPI service used for patent search.",
+      "sourceType": "com.example.backend.config.SerpApiConfig"
+    },
+    {
+      "name": "serpapi.base.url",
+      "type": "java.lang.String",
+      "description": "Base URL for SerpAPI service endpoint.",
+      "sourceType": "com.example.backend.config.SerpApiConfig",
+      "defaultValue": "https://serpapi.com/search.json"
+    },
+    {
+      "name": "mail.username",
+      "type": "java.lang.String",
+      "description": "Email username for SMTP authentication (Gmail).",
+      "sourceType": "org.springframework.boot.autoconfigure.mail.MailProperties"
+    },
+    {
+      "name": "mail.password",
+      "type": "java.lang.String",
+      "description": "Email password or app-specific password for SMTP authentication.",
+      "sourceType": "org.springframework.boot.autoconfigure.mail.MailProperties"
+    },
+    {
+      "name": "admin.email",
+      "type": "java.lang.String",
+      "description": "Administrator email address for system notifications and admin operations.",
+      "sourceType": "com.example.backend.config.AppConfig"
+    },
+    {
+      "name": "app.admin.email",
+      "type": "java.lang.String",
+      "description": "Administrator email address for application-level notifications and admin operations.",
+      "sourceType": "com.example.backend.config.AppConfig"
+    },
+    {
+      "name": "app.email.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Feature toggle to enable or disable email functionality globally.",
+      "sourceType": "com.example.backend.config.EmailConfig",
+      "defaultValue": true
+    }
+  ]
+}

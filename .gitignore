@@ -1,0 +1,192 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+/build
+/dist
+/.next
+/out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+!.env.example
+!.env.template
+
+# Java/Maven/Spring Boot
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/
+mvnw
+mvnw.cmd
+
+# Sensitive configuration files
+**/application-secrets.properties
+!**/application-secrets.properties.example
+**/application.properties
+!**/application.properties.template
+
+# Firebase actual config files (use templates/examples instead)
+**/firebase.js
+!**/firebase.js.template
+
+# Database
+*.db
+*.sqlite
+*.log
+
+# Firebase
+**/.firebase/
+**/firebase-debug.log
+
+# Temp files
+*.tmp
+*.temp
+.cache/
+
+# API Keys and Secrets
+**/*-secrets.*
+**/secrets.*
+**/*.secret
+.credentials/
+
+# Documentation files (Markdown guides)
+*.md
+# Keep only root README and essential docs
+!README.md
+!LICENSE.md
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+
+# All documentation patterns
+**/*-README.md
+**/*-SETUP.md
+**/*-GUIDE*.md
+**/*-FIX*.md
+**/*-SUMMARY.md
+**/*-CHECKLIST.md
+**/ADMIN-*.md
+**/QUICK-*.md
+**/PATENT-*.md
+**/IMPLEMENTATION-*.md
+**/MIGRATION-*.md
+**/DEPLOYMENT-*.md
+**/SECURITY-*.md
+**/EMAIL-*.md
+**/FIRESTORE-*.md
+**/ACCOUNT-*.md
+**/SEARCH-*.md
+**/UI-*.md
+**/CHATBOT-*.md
+**/NOTIFICATION-*.md
+**/*-STARTUP-*.html
+**/START-*.html
+**/START-*.md
+**/test-api.html
+
+# Analytics Documentation Files
+ANALYTICS-*.md
+GROWTH-ANALYTICS-*.md
+QUICK-REFERENCE.txt
+# **/test-analytics.html
+**/setup-analytics.bat
+**/verify-analytics.ps1
+**/create-analytics-table.sql
+
+# SQL Files - Database scripts and schemas
+*.sql
+**/*.sql
+# Keep template/migration SQL files if needed
+!**/migrations/*.sql
+!**/schema/*.sql
+# Exclude all backend SQL documentation and utility files
+**/check-*.sql
+**/create-*.sql
+**/insert-*.sql
+**/setup-*.sql
+**/add-*.sql
+**/update-*.sql
+**/verify-*.sql
+**/view-*.sql
+**/reorganize-*.sql
+**/set-*.sql
+**/fix-*.sql
+**/chatbot-*.sql
+**/EXECUTE-*.sql
+**/QUICK-*.sql
+
+# PowerShell and batch script files (setup, admin, test scripts)
+**/setup-*.ps1
+**/start-*.ps1
+**/restart-*.ps1
+**/check-*.ps1
+**/test-*.ps1
+**/insert-*.ps1
+**/deploy-*.ps1
+**/database-*.ps1
+**/clear-*.ps1
+**/view-*.ps1
+**/update-*.ps1
+**/reinitialize-*.ps1
+**/*.bat
+!**/mvnw.cmd
+
+# Text documentation files
+**/temp-*.txt
+**/*-details.txt
+**/*-credentials.txt
+
+# Firebase Configuration Files (contain API keys)
+**/firebase.js
+!**/firebase.js.template
+
+# Environment Files (contain API keys and secrets)
+.env*
+!.env.template
+!.env.example
+
+# API Keys and Credentials
+**/apiKeys.js
+**/credentials.json
+**/serviceAccountKey.json
+**/*-credentials.*
+**/*-apikey.*
+**/*-key.json
+
+# Password and Secret Files
+**/passwords.txt
+**/secrets.txt
+**/.secrets/
+**/*password*
+!**/package.json
+!**/package-lock.json
+
+# Spring Boot Application Properties (may contain DB passwords)
+**/application.properties
+**/application.yml
+!**/application.properties.template
+!**/application.yml.template
+
+# Test Credentials (Razorpay, etc.)
+**/*-test-credentials.*
+**/*-credentials.*
+

@@ -1,0 +1,38 @@
+# Application Properties Template
+# Copy this file to application.properties and fill in your actual values
+# NEVER commit application.properties or application-secrets.properties to Git!
+
+server.port=8080
+
+# Database Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/my_project_db
+spring.datasource.username=postgres
+spring.datasource.password=${DB_PASSWORD:YOUR_DB_PASSWORD_HERE}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA/Hibernate Configuration
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# SerpAPI Configuration
+serpapi.key=${SERPAPI_KEY:YOUR_SERPAPI_KEY_HERE}
+serpapi.base.url=https://serpapi.com/search.json
+
+# Email Configuration (Gmail)
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=${MAIL_USERNAME:YOUR_EMAIL@gmail.com}
+spring.mail.password=${MAIL_PASSWORD:YOUR_GMAIL_APP_PASSWORD_HERE}
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+
+# Admin Email
+app.admin.email=${ADMIN_EMAIL:YOUR_ADMIN_EMAIL@gmail.com}
+
+# Email Feature Toggle (set to false to disable email temporarily)
+app.email.enabled=true
+
