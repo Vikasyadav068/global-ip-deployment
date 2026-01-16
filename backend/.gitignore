@@ -44,3 +44,8 @@ build/
 .env.*.local
 !.env.example
 
+### Duplicate and Temporary Files ###
+**/*copy*
+**/*.copy
+**/*.backup
+

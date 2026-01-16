@@ -28,6 +28,11 @@ yarn-error.log*
 !.env.example
 !.env.template
 
+# Backend environment files
+backend/.env
+backend/.env.local
+!backend/.env.example
+
 # Java/Maven/Spring Boot
 target/
 *.class
