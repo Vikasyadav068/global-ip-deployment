@@ -16,47 +16,51 @@
     <groupId>com.example</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>Backend project</description>
+    <packaging>jar</packaging>
 
+    <name>backend</name>
+    <description>Spring Boot Backend</description>
+
+    <!-- ✅ Railway compatible Java version -->
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
 
+        <!-- Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-
+        <!-- JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-
+        <!-- Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-
+        <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -65,6 +69,7 @@
 
     </dependencies>
 
+    <!-- ✅ Spring Boot plugin (required for Railway) -->
     <build>
         <plugins>
             <plugin>
@@ -73,5 +78,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- ✅ Empty production profile (Railway -Pproduction fix) -->
+    <profiles>
+        <profile>
+            <id>production</id>
+        </profile>
+    </profiles>
 
 </project>
