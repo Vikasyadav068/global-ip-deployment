@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import ForgotPassword from './components/ForgotPassword';
+// import ForgotPassword from './components/ForgotPassword';
 import Verification from './components/Verification';
 import App from './App';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -16,7 +16,7 @@ const AppRouter = () => {
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
+      {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
       <Route path="/verification" element={<Verification />} />
       
       {/* Public Legal Pages */}
