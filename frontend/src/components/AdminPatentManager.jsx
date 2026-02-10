@@ -310,7 +310,7 @@ const AdminPatentManager = ({ onBack }) => {
     setLoading(true);
     setMessage('');
     try {
-      console.log('Fetching from: ${API_BASE_URL}/patent-filing/all');
+      console.log(`Fetching from: ${API_BASE_URL}/patent-filing/all`);
       const response = await fetch(`${API_BASE_URL}/patent-filing/all`, {
         method: 'GET',
         headers: {
