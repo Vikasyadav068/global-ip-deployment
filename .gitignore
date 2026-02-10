@@ -50,7 +50,9 @@ mvnw.cmd
 !**/application.properties.template
 
 # Firebase actual config files (use templates/examples instead)
+# Allow frontend firebase.js since it uses environment variables only
 **/firebase.js
+!frontend/src/firebase.js
 !**/firebase.js.template
 
 # Database
