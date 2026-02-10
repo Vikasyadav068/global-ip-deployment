@@ -5,6 +5,7 @@ import PatentProgressTracker from './PatentProgressTracker';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import UpgradeModal from './UpgradeModal';
+import { API_BASE_URL } from '../config/api';
 
 const FilingTracker = forwardRef(({ userProfile, onBack, onAddNotification }, ref) => {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -56,7 +57,7 @@ const FilingTracker = forwardRef(({ userProfile, onBack, onAddNotification }, re
       console.log('Profile email:', userProfile?.email);
       
       // Fetch ALL patent filings
-      const response = await fetch(`http://localhost:8080/api/patent-filing/all`);
+      const response = await fetch(`${API_BASE_URL}/patent-filing/all`);
       console.log('API Response status:', response.status);
       
       if (!response.ok) {
@@ -464,7 +465,7 @@ Note: PDF document has been downloaded. Please attach it manually to your Linked
       }
 
       // Update the patent filing with the message
-      const response = await fetch(`http://localhost:8080/api/patent-filing/${selectedPatent.id}/message`, {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/${selectedPatent.id}/message`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -8,6 +8,7 @@ import {
 import { auth } from "../firebase";
 import UpgradeModal from "./UpgradeModal";
 import { getAllStatesAndUTs, getDistricts } from "../data/indianStatesDistricts";
+import { API_BASE_URL } from "../config/api";
 
 const PatentFilingForm = ({ onClose, userProfile, onAddNotification, onFilingSuccess }) => {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -613,7 +614,7 @@ const PatentFilingForm = ({ onClose, userProfile, onAddNotification, onFilingSuc
       console.log('Full filing data:', filingData);
       
       // 3. Submit to PostgreSQL via backend API
-      const response = await fetch('http://localhost:8080/api/patent-filing/submit', {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

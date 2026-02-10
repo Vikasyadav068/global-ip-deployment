@@ -10,6 +10,7 @@ import { doc, updateDoc, serverTimestamp, getDoc, deleteDoc, setDoc } from 'fire
 import { ref, deleteObject } from 'firebase/storage';
 import { sendPasswordResetEmail, signOut } from 'firebase/auth';
 import { storage } from '../firebase';
+import { API_BASE_URL } from '../config/api';
 
 const SettingsPage = ({ userProfile, setUserProfile, onBack }) => {
   const [activeTab, setActiveTab] = useState('security');
@@ -110,31 +111,29 @@ const SettingsPage = ({ userProfile, setUserProfile, onBack }) => {
       
       setLegalLoading(true);
       try {
-        const API_BASE = 'http://localhost:8080/api';
-        
         // Fetch FAQs
-        const faqResponse = await fetch(`${API_BASE}/faq`);
+        const faqResponse = await fetch(`${API_BASE_URL}/faq`);
         if (faqResponse.ok) {
           const faqData = await faqResponse.json();
           setFaqs(faqData.data || []);
         }
         
         // Fetch Terms & Conditions
-        const termsResponse = await fetch(`${API_BASE}/terms`);
+        const termsResponse = await fetch(`${API_BASE_URL}/terms`);
         if (termsResponse.ok) {
           const termsData = await termsResponse.json();
           setTermsConditions(termsData.data || null);
         }
         
         // Fetch Privacy Policy
-        const privacyResponse = await fetch(`${API_BASE}/privacy`);
+        const privacyResponse = await fetch(`${API_BASE_URL}/privacy`);
         if (privacyResponse.ok) {
           const privacyData = await privacyResponse.json();
           setPrivacyPolicy(privacyData.data || null);
         }
         
         // Fetch Cookie Policy
-        const cookieResponse = await fetch(`${API_BASE}/cookie`);
+        const cookieResponse = await fetch(`${API_BASE_URL}/cookie`);
         if (cookieResponse.ok) {
           const cookieData = await cookieResponse.json();
           setCookiePolicy(cookieData.data || null);

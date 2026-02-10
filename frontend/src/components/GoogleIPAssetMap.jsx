@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, MapPin, Globe } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const GoogleIPAssetMap = () => {
   const mapRef = useRef(null);
@@ -73,7 +74,7 @@ const GoogleIPAssetMap = () => {
   const fetchPatentData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8080/api/patent-filing/all', {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/all`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

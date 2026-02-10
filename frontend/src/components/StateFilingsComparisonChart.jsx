@@ -12,6 +12,7 @@ import {
   Cell,
   LabelList
 } from 'recharts';
+import { API_BASE_URL } from '../config/api';
 
 const StateFilingsComparisonChart = () => {
   const [stateData, setStateData] = useState({});
@@ -51,7 +52,7 @@ const StateFilingsComparisonChart = () => {
       setError(null);
       
       console.log('🔄 Fetching state-wise patent data from backend...');
-      const response = await fetch('http://localhost:8080/api/patent-filing/count-by-state', {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/count-by-state`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

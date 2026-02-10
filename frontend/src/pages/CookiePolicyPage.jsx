@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, ArrowLeft, Calendar, FileText, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 const CookiePolicyPage = () => {
   const navigate = useNavigate();
@@ -13,8 +14,7 @@ const CookiePolicyPage = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const API_BASE = 'http://localhost:8080/api';
-        const response = await fetch(`${API_BASE}/cookie`);
+        const response = await fetch(`${API_BASE_URL}/cookie`);
         
         if (response.ok) {
           const data = await response.json();

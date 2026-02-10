@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Loader, Bot, User, Sparkles } from 'lucide-react';
 import './Chatbot.css';
+import { API_BASE_URL } from '../config/api';
 
 const Chatbot = ({ userId, userProfile }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +54,7 @@ const Chatbot = ({ userId, userProfile }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/chatbot/chat', {
+      const response = await fetch(`${API_BASE_URL}/chatbot/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

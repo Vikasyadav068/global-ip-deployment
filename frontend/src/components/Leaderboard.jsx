@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Trophy, Medal, Award, TrendingUp, Sparkles, RefreshCw } from 'lucide-react';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { API_BASE_URL } from '../config/api';
 
 const Leaderboard = ({ onBack, userProfile, onNavigateToPatentFiling }) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -25,7 +26,7 @@ const Leaderboard = ({ onBack, userProfile, onNavigateToPatentFiling }) => {
       setLoading(true);
       setError(null);
       
-      const url = `http://localhost:8080/api/leaderboard/top-users?filter=${timeFilter}`;
+      const url = `${API_BASE_URL}/leaderboard/top-users?filter=${timeFilter}`;
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -86,7 +87,7 @@ const Leaderboard = ({ onBack, userProfile, onNavigateToPatentFiling }) => {
   const fetchAdditionalStats = async () => {
     try {
       // Fetch weekly stats
-      const weeklyResponse = await fetch('http://localhost:8080/api/leaderboard/top-users?filter=weekly');
+      const weeklyResponse = await fetch(`${API_BASE_URL}/leaderboard/top-users?filter=weekly`);
       if (weeklyResponse.ok) {
         const weeklyData = await weeklyResponse.json();
         const weeklyTotal = weeklyData.reduce((sum, user) => sum + (user.patentCount || 0), 0);
@@ -95,7 +96,7 @@ const Leaderboard = ({ onBack, userProfile, onNavigateToPatentFiling }) => {
       }
       
       // Fetch monthly stats
-      const monthlyResponse = await fetch('http://localhost:8080/api/leaderboard/top-users?filter=monthly');
+      const monthlyResponse = await fetch(`${API_BASE_URL}/leaderboard/top-users?filter=monthly`);
       if (monthlyResponse.ok) {
         const monthlyData = await monthlyResponse.json();
         const monthlyTotal = monthlyData.reduce((sum, user) => sum + (user.patentCount || 0), 0);
