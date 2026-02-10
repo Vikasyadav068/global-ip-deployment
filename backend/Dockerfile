@@ -26,8 +26,9 @@ COPY --from=build /app/target/*.jar app.jar
 # Expose port
 EXPOSE 8080
 
-# Set environment variables
+# Set environment variables with defaults
 ENV JAVA_OPTS="-Xmx512m -Xms256m"
+ENV PORT=8080
 
 # Run the application
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -jar app.jar"]

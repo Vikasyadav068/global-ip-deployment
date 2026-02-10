@@ -1,0 +1,10 @@
+target/
+.mvn/
+mvnw
+mvnw.cmd
+*.md
+.git/
+.gitignore
+*.log
+.env
+.DS_Store
