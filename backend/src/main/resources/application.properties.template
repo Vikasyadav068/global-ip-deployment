@@ -2,12 +2,15 @@
 # Copy this file to application.properties and fill in your actual values
 # NEVER commit application.properties or application-secrets.properties to Git!
 
-server.port=8080
+# Server Port (Railway auto-sets PORT variable)
+server.port=${PORT:8080}
 
 # Database Configuration
-spring.datasource.url=jdbc:postgresql://localhost:5432/my_project_db
-spring.datasource.username=postgres
-spring.datasource.password=${DB_PASSWORD:YOUR_DB_PASSWORD_HERE}
+# For Railway: Use Railway's Postgres variables (PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD)
+# For Local: Use localhost connection
+spring.datasource.url=jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5432}/${PGDATABASE:my_project_db}
+spring.datasource.username=${PGUSER:postgres}
+spring.datasource.password=${PGPASSWORD:postgres}
 spring.datasource.driver-class-name=org.postgresql.Driver
 
 # JPA/Hibernate Configuration
