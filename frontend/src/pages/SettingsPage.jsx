@@ -119,21 +119,21 @@ const SettingsPage = ({ userProfile, setUserProfile, onBack }) => {
         }
         
         // Fetch Terms & Conditions
-        const termsResponse = await fetch(`${API_BASE}/terms`);
+        const termsResponse = await fetch(`${API_BASE_URL}/terms`);
         if (termsResponse.ok) {
           const termsData = await termsResponse.json();
           setTermsConditions(termsData.data || null);
         }
         
         // Fetch Privacy Policy
-        const privacyResponse = await fetch(`${API_BASE}/privacy`);
+        const privacyResponse = await fetch(`${API_BASE_URL}/privacy`);
         if (privacyResponse.ok) {
           const privacyData = await privacyResponse.json();
           setPrivacyPolicy(privacyData.data || null);
         }
         
         // Fetch Cookie Policy
-        const cookieResponse = await fetch(`${API_BASE}/cookie`);
+        const cookieResponse = await fetch(`${API_BASE_URL}/cookie`);
         if (cookieResponse.ok) {
           const cookieData = await cookieResponse.json();
           setCookiePolicy(cookieData.data || null);
