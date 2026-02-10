@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["...", "maven", "jdk17"]
+
+[phases.build]
+cmds = ["mvn clean package -DskipTests"]
+
+[phases.start]
+cmd = "java -Xmx512m -Xms256m -jar target/*.jar"
+
+[variables]
+MAVEN_OPTS = "-Xmx1024m"
