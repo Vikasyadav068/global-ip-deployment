@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, History, Filter, Globe, Database, Share2, Copy, Download, X } from 'lucide-react';
 import { getSearchCounters, incrementSearchCounter } from '../utils/searchCounters';
+import { API_BASE_URL } from '../config/api';
 
 const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, userProfile }) => {
   const [results, setResults] = useState([]);
@@ -166,7 +167,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
           let patentFilingsResults = [];
           
           // Fetch regular patents
-          const response = await fetch('http://localhost:8080/api/patents/local');
+          const response = await fetch(`${API_BASE_URL}/patents/local`);
           if (response.ok) {
             const data = await response.json();
             console.log(`Auto-loaded ${data.length} patents from database`);
@@ -177,7 +178,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
           
           // Fetch granted/rejected patent filings
           try {
-            const filingsResponse = await fetch('http://localhost:8080/api/patent-filing/search/granted-rejected');
+            const filingsResponse = await fetch(`${API_BASE_URL}/patent-filing/search/granted-rejected`);
             if (filingsResponse.ok) {
               const filingsData = await filingsResponse.json();
               console.log(`Auto-loaded ${filingsData.length} granted/rejected patent filings`);
@@ -319,7 +320,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
         // If no query, use GET endpoint to fetch all
         if (!searchQuery || searchQuery.trim() === '') {
           // Fetch regular patents
-          const response = await fetch('http://localhost:8080/api/patents/local');
+          const response = await fetch(`${API_BASE_URL}/patents/local`);
           if (response.ok) {
             const data = await response.json();
             console.log(`Found ${data.length} patents in local database (all records)`);
@@ -331,7 +332,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
           // Fetch granted/rejected patent filings
           try {
             console.log('🔍 Fetching granted/rejected patent filings...');
-            const filingsResponse = await fetch('http://localhost:8080/api/patent-filing/search/granted-rejected');
+            const filingsResponse = await fetch(`${API_BASE_URL}/patent-filing/search/granted-rejected`);
             console.log('📡 Patent filings response status:', filingsResponse.status);
             if (filingsResponse.ok) {
               const filingsData = await filingsResponse.json();
@@ -379,7 +380,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
           setResults(mergedResults);
         } else {
           // Search with query - search regular patents
-          const response = await fetch('http://localhost:8080/api/patents/search/local', {
+          const response = await fetch(`${API_BASE_URL}/patents/search/local`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -397,7 +398,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
           // Also search in patent filings
           try {
             console.log('🔍 Searching patent filings with query:', searchQuery);
-            const filingsResponse = await fetch('http://localhost:8080/api/patent-filing/search/granted-rejected');
+            const filingsResponse = await fetch(`${API_BASE_URL}/patent-filing/search/granted-rejected`);
             console.log('📡 Patent filings search response status:', filingsResponse.status);
             if (filingsResponse.ok) {
               const filingsData = await filingsResponse.json();
@@ -452,7 +453,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
         }
       } else {
         // Search from API
-        const response = await fetch('http://localhost:8080/api/patents/search', {
+        const response = await fetch(`${API_BASE_URL}/patents/search`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -586,7 +587,7 @@ const SearchResultsPage = ({ query, onBack, searchMode = 'api', setSearchMode, u
       } else {
         // For regular patents, fetch from API
         const patentId = patent.ipRightIdentifier || patent.id;
-        const response = await fetch(`http://localhost:8080/api/patents/${patentId}`);
+        const response = await fetch(`${API_BASE_URL}/patents/${patentId}`);
         if (response.ok) {
           const fullPatent = await response.json();
           setSelectedPatent(fullPatent);

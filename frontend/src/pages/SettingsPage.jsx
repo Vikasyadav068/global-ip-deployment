@@ -10,6 +10,7 @@ import { doc, updateDoc, serverTimestamp, getDoc, deleteDoc, setDoc } from 'fire
 import { ref, deleteObject } from 'firebase/storage';
 import { sendPasswordResetEmail, signOut } from 'firebase/auth';
 import { storage } from '../firebase';
+import { API_BASE_URL } from '../config/api';
 
 const SettingsPage = ({ userProfile, setUserProfile, onBack }) => {
   const [activeTab, setActiveTab] = useState('security');
@@ -110,10 +111,8 @@ const SettingsPage = ({ userProfile, setUserProfile, onBack }) => {
       
       setLegalLoading(true);
       try {
-        const API_BASE = 'http://localhost:8080/api';
-        
         // Fetch FAQs
-        const faqResponse = await fetch(`${API_BASE}/faq`);
+        const faqResponse = await fetch(`${API_BASE_URL}/faq`);
         if (faqResponse.ok) {
           const faqData = await faqResponse.json();
           setFaqs(faqData.data || []);

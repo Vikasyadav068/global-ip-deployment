@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Star, Send, CheckCircle2, MessageSquare, X } from "lucide-react";
+import { API_BASE_URL } from "../config/api";
 
 const FeedbackForm = ({ onClose, userProfile }) => {
   const [ratings, setRatings] = useState({
@@ -54,7 +55,7 @@ const FeedbackForm = ({ onClose, userProfile }) => {
       };
 
       // Call backend API
-      const response = await fetch("http://localhost:8080/api/feedback/submit", {
+      const response = await fetch(`${API_BASE_URL}/feedback/submit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Phone, User, MessageSquare, Send, CheckCircle2, X, AlertTriangle } from "lucide-react";
+import { API_BASE_URL } from "../config/api";
 
 const ContactForm = ({ onClose }) => {
   const [mode, setMode] = useState("contact"); // "contact" or "report"
@@ -36,7 +37,7 @@ const ContactForm = ({ onClose }) => {
     try {
       if (mode === "contact") {
         // Call backend API for contact form
-        const response = await fetch("http://localhost:8080/api/contact/submit", {
+        const response = await fetch(`${API_BASE_URL}/contact/submit`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +60,7 @@ const ContactForm = ({ onClose }) => {
       } else {
         // Call backend API for report user (without storing data)
         console.log("Sending report data:", reportData);
-        const response = await fetch("http://localhost:8080/api/contact/report-user", {
+        const response = await fetch(`${API_BASE_URL}/contact/report-user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

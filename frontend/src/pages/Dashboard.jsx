@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TrendingUp, CheckCircle, Database, Globe, Crown, Zap, Calendar, Info } from "lucide-react";
 import { doc, getDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db, auth } from "../firebase";
+import { API_BASE_URL } from "../config/api";
 
 import {
   LineChart,
@@ -210,7 +211,7 @@ const Dashboard = ({ userProfile, searchMode, setSearchMode, onSearch, setCurren
       setDbConnectionStatus('checking');
       try {
         console.log('Fetching patent count from backend...');
-        const response = await fetch('http://localhost:8080/api/patents/count');
+        const response = await fetch(`${API_BASE_URL}/patents/count`);
         if (response.ok) {
           const count = await response.json();
           console.log('Patent count received:', count, 'Type:', typeof count);
@@ -355,7 +356,7 @@ const Dashboard = ({ userProfile, searchMode, setSearchMode, onSearch, setCurren
       setFilingsStatus('checking');
       try {
         console.log('Fetching patent filings count from backend...');
-        const response = await fetch('http://localhost:8080/api/patent-filing/count');
+        const response = await fetch(`${API_BASE_URL}/patent-filing/count`);
         if (response.ok) {
           const count = await response.json();
           console.log('Patent filings count received:', count);
@@ -432,7 +433,7 @@ const Dashboard = ({ userProfile, searchMode, setSearchMode, onSearch, setCurren
         console.log('Fetching feedback analytics from backend...');
 
         // Fetch stats
-        const statsResponse = await fetch('http://localhost:8080/api/feedback/stats');
+        const statsResponse = await fetch(`${API_BASE_URL}/feedback/stats`);
         if (statsResponse.ok) {
           const stats = await statsResponse.json();
           console.log('Feedback stats received:', stats);
@@ -440,7 +441,7 @@ const Dashboard = ({ userProfile, searchMode, setSearchMode, onSearch, setCurren
         }
 
         // Fetch all feedbacks
-        const allResponse = await fetch('http://localhost:8080/api/feedback/all');
+        const allResponse = await fetch(`${API_BASE_URL}/feedback/all`);
         if (allResponse.ok) {
           const feedbacks = await allResponse.json();
           console.log('All feedbacks received:', feedbacks.length);
@@ -467,7 +468,7 @@ const Dashboard = ({ userProfile, searchMode, setSearchMode, onSearch, setCurren
       setYearlyDataStatus('loading');
       try {
         console.log('Fetching yearly patent data from backend...');
-        const response = await fetch('http://localhost:8080/api/patents/yearly-counts');
+        const response = await fetch(`${API_BASE_URL}/patents/yearly-counts`);
         if (response.ok) {
           const data = await response.json();
           console.log('Yearly patent data received:', data);

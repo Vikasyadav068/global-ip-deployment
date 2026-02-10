@@ -5,6 +5,7 @@ import { db } from '../firebase';
 import { getSearchCounters, getGlobalSearchStats } from '../utils/searchCounters';
 import IndiaPatentPanel from '../components/IndiaPatentPanel';
 import StateFilingsComparisonChart from '../components/StateFilingsComparisonChart';
+import { API_BASE_URL } from '../config/api';
 import { 
   BarChart, 
   Bar, 
@@ -351,7 +352,7 @@ const LegalStatusPage = ({ userProfile, onNavigateToPatentFiling }) => {
       setStats(prev => ({ ...prev, loading: true }));
       
       // Fetch all patents from the system (same endpoint as Admin Panel)
-      const response = await fetch('http://localhost:8080/api/patent-filing/all', {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/all`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

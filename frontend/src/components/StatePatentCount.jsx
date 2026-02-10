@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, TrendingUp } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const INDIAN_STATES = [
   'Andhra Pradesh',
@@ -67,7 +68,7 @@ const StatePatentCount = ({ onStateChange }) => {
       setError(null);
       
       console.log('🔄 Fetching state-wise patent data from backend...');
-      const response = await fetch('http://localhost:8080/api/patent-filing/count-by-state', {
+      const response = await fetch(`${API_BASE_URL}/patent-filing/count-by-state`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +100,7 @@ const StatePatentCount = ({ onStateChange }) => {
       setLoadingCities(true);
       console.log('🔄 Fetching cities for state:', state);
       
-      const url = `http://localhost:8080/api/patent-filing/cities-by-state?state=${encodeURIComponent(state)}`;
+      const url = `${API_BASE_URL}/patent-filing/cities-by-state?state=${encodeURIComponent(state)}`;
       console.log('🔗 Request URL:', url);
       
       const response = await fetch(url, {

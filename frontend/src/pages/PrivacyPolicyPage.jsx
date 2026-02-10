@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, ArrowLeft, Calendar, FileText, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 const PrivacyPolicyPage = () => {
   const navigate = useNavigate();
@@ -13,8 +14,7 @@ const PrivacyPolicyPage = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const API_BASE = 'http://localhost:8080/api';
-        const response = await fetch(`${API_BASE}/privacy`);
+        const response = await fetch(`${API_BASE_URL}/privacy`);
         
         if (response.ok) {
           const data = await response.json();
